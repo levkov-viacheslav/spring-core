@@ -8,7 +8,13 @@ public class AppMain {
                 "applicationContext.xml"
         );
         MusicPlayer player = context.getBean("musicPlayerBean", MusicPlayer.class);
-        player.playMusic();
+        try{
+        player.playMusic();}
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println(player.getName());
+        System.out.println(player.getVolume());
         context.close();
     }
 }
