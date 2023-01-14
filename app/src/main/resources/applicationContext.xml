@@ -5,6 +5,11 @@
     http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="classicalMusic" class="levkov.ClassicalMusic">
+    <bean id="musicBean" class="levkov.RockMusic">
     </bean>
+    <bean id="musicPlayerBean" class="levkov.MusicPlayer">
+        <constructor-arg ref="musicBean"/>
+    </bean>
+
+
 </beans>
