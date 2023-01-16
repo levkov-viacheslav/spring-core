@@ -61,4 +61,12 @@ public class MusicPlayer  {
             throw new Exception("There is nothing to play");
         }
     }
+
+    private void initialize() {
+        System.out.println("Initializing...");
+    }
+    // Bean's scope must be Singleton (doesn't work with prototype, honestly it makes no sense)
+    private void destroy() {
+        System.out.println("Destroying...");
+    }
 }

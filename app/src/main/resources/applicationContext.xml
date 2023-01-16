@@ -10,9 +10,10 @@
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
     <bean id="rockMusicBean" class="levkov.RockMusic"/>
-    <bean id="classicalMusicBean" class="levkov.ClassicalMusic"/>
+    <bean id="classicalMusicBean" class="levkov.ClassicalMusic" factory-method="getClassicalMusicInstance"/>
     <bean id="rapMusicBean" class="levkov.RapMusic"/>
-    <bean id="musicPlayerBean" class="levkov.MusicPlayer" scope="prototype">
+    <bean id="musicPlayerBean" class="levkov.MusicPlayer" scope="singleton" init-method="initialize"
+        destroy-method="destroy">
         <constructor-arg>
             <list>
                 <ref bean="classicalMusicBean"/>

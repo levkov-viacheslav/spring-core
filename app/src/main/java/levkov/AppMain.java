@@ -8,13 +8,11 @@ public class AppMain {
                 "applicationContext.xml"
         );
         MusicPlayer player = context.getBean("musicPlayerBean", MusicPlayer.class);
-        MusicPlayer player2 = context.getBean("musicPlayerBean", MusicPlayer.class);
-        try{
-        player.playMusic();}
-        catch (Exception e) {
+        try {
+            player.playMusic();
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        testPrototypeScope(player, player2);
         context.close();
     }
 
