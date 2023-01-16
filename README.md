@@ -4,3 +4,5 @@ That's the list what I learned during this practice:
 * What is DI
 * DI in constructors, setters
 * Injecting values and referencies (also from an external file)
+* Bean scope
+* Bean lifecycle, init-method, destroy-method, factory-method
