@@ -12,7 +12,7 @@
     <bean id="rockMusicBean" class="levkov.RockMusic"/>
     <bean id="classicalMusicBean" class="levkov.ClassicalMusic"/>
     <bean id="rapMusicBean" class="levkov.RapMusic"/>
-    <bean id="musicPlayerBean" class="levkov.MusicPlayer">
+    <bean id="musicPlayerBean" class="levkov.MusicPlayer" scope="prototype">
         <constructor-arg>
             <list>
                 <ref bean="classicalMusicBean"/>

@@ -8,13 +8,24 @@ public class AppMain {
                 "applicationContext.xml"
         );
         MusicPlayer player = context.getBean("musicPlayerBean", MusicPlayer.class);
+        MusicPlayer player2 = context.getBean("musicPlayerBean", MusicPlayer.class);
         try{
         player.playMusic();}
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        System.out.println(player.getName());
-        System.out.println(player.getVolume());
+        testPrototypeScope(player, player2);
         context.close();
+    }
+
+    public static void testPrototypeScope(MusicPlayer  player, MusicPlayer player2) {
+        //must be false
+        System.out.println(player == player2);
+        //hashcode must be different
+        System.out.println(player);
+        System.out.println(player2);
+        // first player's volume should not change
+        player2.setVolume(10);
+        System.out.println(player.getVolume());
     }
 }
