@@ -6,19 +6,16 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-
+    <context:component-scan base-package="levkov"/>
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-    <bean id="rockMusicBean" class="levkov.RockMusic"/>
-    <bean id="classicalMusicBean" class="levkov.ClassicalMusic" factory-method="getClassicalMusicInstance"/>
-    <bean id="rapMusicBean" class="levkov.RapMusic"/>
     <bean id="musicPlayerBean" class="levkov.MusicPlayer" scope="singleton" init-method="initialize"
-        destroy-method="destroy">
+          destroy-method="destroy">
         <constructor-arg>
             <list>
-                <ref bean="classicalMusicBean"/>
-                <ref bean="rockMusicBean"/>
-                <ref bean="rapMusicBean"/>
+                <ref bean="classicalMusic"/>
+                <ref bean="rockMusic"/>
+                <ref bean="rapMusic"/>
             </list>
         </constructor-arg>
         <property name="name" value="${musicPlayer.name}"/>

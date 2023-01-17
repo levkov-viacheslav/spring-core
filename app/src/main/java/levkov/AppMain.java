@@ -7,16 +7,12 @@ public class AppMain {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
                 "applicationContext.xml"
         );
-        MusicPlayer player = context.getBean("musicPlayerBean", MusicPlayer.class);
-        try {
-            player.playMusic();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        Computer computer = context.getBean("computer", Computer.class);
+        System.out.println(computer);
         context.close();
     }
 
-    public static void testPrototypeScope(MusicPlayer  player, MusicPlayer player2) {
+    public static void testPrototypeScope(MusicPlayer player, MusicPlayer player2) {
         //must be false
         System.out.println(player == player2);
         //hashcode must be different
