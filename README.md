@@ -6,4 +6,4 @@ That's the list what I learned during this practice:
 * Injecting values and referencies (also from an external file)
 * Bean scope
 * Bean lifecycle, init-method, destroy-method, factory-method
-* Annotations @Component, @Autowired
+* Annotations @Component, @Autowired, @Qualifier

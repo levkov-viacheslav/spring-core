@@ -1,5 +1,6 @@
 package levkov;
 
+import java.util.List;
 public interface Music {
-    String playSong();
+    List<String> getPlaylist();
 }

@@ -1,72 +1,50 @@
 package levkov;
 
-import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
+import java.util.Random;
 
-public class MusicPlayer  {
-    private Music music;
-    private String name;
-    private int volume;
-    private List<Music> musicList = new ArrayList<>();
+@Component
+public class MusicPlayer {
 
-    public List<Music> getMusicList() {
-        return musicList;
+    private Music classicalMusic;
+    private Music rockMusic;
+    private Music rapMusic;
+
+    @Autowired
+    public MusicPlayer(@Qualifier("classicalMusic")Music classicalMusic, @Qualifier("rockMusic") Music rockMusic,
+                       @Qualifier("rapMusic") Music rapMusic) {
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
+        this.rapMusic = rapMusic;
     }
 
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
-    }
-
-    public MusicPlayer() {}
-
-    public MusicPlayer(Music music) {
-        this.music = music;
-    }
-
-    public MusicPlayer(List<Music> musicList) {
-        this.musicList = musicList;
-    }
-
-    public Music getMusic() {
-        return music;
-    }
-
-    public void setMusic(Music music) {
-        this.music = music;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    public void playMusic() throws Exception {
-        if(musicList.size() > 0) {
-            for (Music music: musicList) {
-                System.out.println(music.playSong());
-            }
+    public void playMusic(Genres genre) {
+        if(genre == Genres.CLASSICAL) {
+            System.out.println(shufflePlaylist(classicalMusic.getPlaylist()));
+        }
+        else if(genre == Genres.ROCK) {
+            System.out.println(shufflePlaylist(rockMusic.getPlaylist()));
+        }
+        else if (genre == Genres.RAP) {
+            System.out.println(shufflePlaylist(rapMusic.getPlaylist()));
         }
         else {
-            throw new Exception("There is nothing to play");
+            System.out.println("The genre not found");
         }
     }
 
-    private void initialize() {
-        System.out.println("Initializing...");
+    private String shufflePlaylist(List<String> playlist) {
+        if(playlist.size() == 0) {
+            return "empty playlist";
+        }
+        else {
+            Random random = new Random();
+            return playlist.get(random.nextInt(0, playlist.size()));
+        }
     }
-    // Bean's scope must be Singleton (doesn't work with prototype, honestly it makes no sense)
-    private void destroy() {
-        System.out.println("Destroying...");
-    }
+
 }

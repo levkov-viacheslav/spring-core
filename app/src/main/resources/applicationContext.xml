@@ -9,18 +9,4 @@
     <context:component-scan base-package="levkov"/>
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-    <bean id="musicPlayerBean" class="levkov.MusicPlayer" scope="singleton" init-method="initialize"
-          destroy-method="destroy">
-        <constructor-arg>
-            <list>
-                <ref bean="classicalMusic"/>
-                <ref bean="rockMusic"/>
-                <ref bean="rapMusic"/>
-            </list>
-        </constructor-arg>
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
-
-
 </beans>
