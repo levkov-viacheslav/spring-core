@@ -11,6 +11,9 @@ public class AppMain {
         player.playMusic(Genres.ROCK);
         player.playMusic(Genres.CLASSICAL);
         player.playMusic(Genres.RAP);
+
+        User user = context.getBean("user", User.class);
+        System.out.println(user.getUserInfo());
         context.close();
     }
 }
