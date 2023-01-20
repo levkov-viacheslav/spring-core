@@ -8,3 +8,4 @@ That's the list what I learned during this practice:
 * Bean lifecycle, init-method, destroy-method, factory-method
 * Annotations @Component, @Autowired, @Qualifier
 * Annotations @Scope, @Value, @PostConstruct, @PreDestroy
+* Configuration via code (a configuration class)
